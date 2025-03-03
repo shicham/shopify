@@ -8,7 +8,7 @@ const router: Router = express.Router();
 router
   .route('/')
   .post(auth('getUsers'),validate(userValidation.createUser), userController.createUser)
-  .get(userController.getUsers);
+  .get(userController.getUsers)
 
   router
   .route('/:userId')
