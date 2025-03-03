@@ -8,11 +8,11 @@ const router: Router = express.Router();
 router
   .route('/')
   .post(auth('manageUsers'),validate(userValidation.createUser), userController.createUser)
-  .get(auth('getUsers'),userController.getUsers)
+  .get(auth('manageUsers'),userController.getUsers)
 
   router
   .route('/:userId')
-  .get(auth('getUser'),userController.getUser)
+  .get(auth('manageUsers'),userController.getUser)
   .patch(auth('manageUsers'),userController.updateUser)
   .delete(auth('manageUsers'),userController.deleteUser);
 
