@@ -20,8 +20,8 @@ export const getUsers = catchAsync(async (req: Request, res: Response) => {
 });
 
 export const getUser = catchAsync(async (req: Request, res: Response) => {
-  if (typeof req.params['userId'] === 'string') {
-    const user = await userService.getUserById(new mongoose.Types.ObjectId(req.params['userId']));
+  if (typeof req.params.userId === 'string') {
+    const user = await userService.getUserById(new mongoose.Types.ObjectId(req.params.userId));
     if (!user) {
       throw new ApiError(httpStatus.NOT_FOUND, 'User not found');
     }
