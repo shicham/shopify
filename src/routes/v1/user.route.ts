@@ -7,13 +7,13 @@ import { auth } from '../../modules/auth';
 const router: Router = express.Router();
 router
   .route('/')
-  .post(auth('getUsers'),validate(userValidation.createUser), userController.createUser)
-  .get(userController.getUsers)
+  .post(auth('createUser'),validate(userValidation.createUser), userController.createUser)
+  .get(auth('getUsers'),userController.getUsers)
 
   router
   .route('/:userId')
-  .get(userController.getUser)
-  .patch(userController.updateUser)
-  .delete(userController.deleteUser);
+  .get(auth('getUser'),userController.getUser)
+  .patch(auth('updateUser'),userController.updateUser)
+  .delete(auth('deleteUser'),userController.deleteUser);
 
 export default router;
