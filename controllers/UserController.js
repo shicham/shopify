@@ -1,4 +1,4 @@
-const {getUri} = require("../utils/Utils")
+const { getUri } = require("../utils/Utils")
 const UserModel = require("../models/UserModel");
 const axios = require("axios");
 const SHOPIFY_API_KEY = process.env.SHOPIFY_API_KEY;
@@ -8,8 +8,8 @@ exports.createUser = async (req, res) => {
     const { shop, userId, name, email } = req.body;
     try {
         const uri = getUri(req)
-        console.log(uri)
         const user = new UserModel({ shop, userId, name, email, uri });
+        
         await user.save();
         res.json(user);
     } catch (error) {

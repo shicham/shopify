@@ -1,5 +1,3 @@
-function getUri(req) {
+exports.getUri = (req) => {
     return req.protocol + '://' + req.get('Host') + req.url;
 }
-
-module.exports = { getUri };
