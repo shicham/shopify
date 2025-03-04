@@ -1,10 +1,11 @@
 import express, { Router } from 'express';
 import { productController } from '../../modules/product'
+import { auth } from '../../modules/auth';
 
 const router: Router = express.Router();
 router
   .route('/')
-  .get(productController.getProduct);
+  .get(auth('manageUsers'),productController.getProduct);
 
 /** 
 router
